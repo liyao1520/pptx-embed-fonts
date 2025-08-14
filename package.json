@@ -1,0 +1,54 @@
+  {
+    "name": "pptx-embed-fonts",
+    "version": "0.0.2",
+    "description": "Embed fonts in pptx files",
+    "type": "module",
+    "files": [
+      "dist"
+    ],
+    "scripts": {
+      "dev": "cd ./example && pnpm dev",
+      "build:example": "cd ./example && pnpm build",
+      "build": "tsup"
+    },
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs"
+      },
+      "./pptxgenjs": {
+        "import": "./dist/pptxgenjs.js",
+        "require": "./dist/pptxgenjs.cjs"
+      }
+    },
+    "types": "./dist/index.d.ts",
+    "keywords": [
+      "pptx",
+      "pptxgenjs",
+      "embed fonts",
+      "pptx-embed-fonts"
+    ],
+    "author": "https://github.com/zhaoyiming",
+    "license": "MIT",
+    "packageManager": "pnpm@10.8.0",
+    "dependencies": {
+      "@xmldom/xmldom": "^0.9.8",
+      "fonteditor-core": "^2.4.1",
+      "jszip": "^3.10.1",
+      "opentype.js": "^1.3.4",
+      "pako": "^2.1.0",
+      "xmldom": "^0.6.0"
+    },
+    "devDependencies": {
+      "@types/node": "^24.0.7",
+      "@types/opentype.js": "^1.3.8",
+      "@types/pako": "^2.0.3",
+      "@types/xmldom": "^0.1.34",
+      "tsup": "^8.5.0",
+      "tsx": "^4.20.3",
+      "typescript": "^5.9.2"
+    },
+    "peerDependencies": {
+      "pptxgenjs": "^3.0.0"
+    }
+  }

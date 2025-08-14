@@ -1,0 +1,21 @@
+@import "tailwindcss";
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.prism-code {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.hidden-scrollbar {
+  scrollbar-width: none;
+}
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
