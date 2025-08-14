@@ -6,6 +6,11 @@
     "files": [
       "dist"
     ],
+    "homepage": "https://github.com/liyao1520/pptx-embed-fonts",
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:liyao1520/pptx-embed-fonts.git"
+    },
     "scripts": {
       "dev": "cd ./example && pnpm dev",
       "build:example": "cd ./example && pnpm build",
