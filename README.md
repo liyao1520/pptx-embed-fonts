@@ -1,5 +1,7 @@
 # pptx-embed-fonts
 
+**[中文文档](./README_ZH.md)**
+
 [![npm version](https://badge.fury.io/js/pptx-embed-fonts.svg)](https://badge.fury.io/js/pptx-embed-fonts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -11,6 +13,10 @@ A JavaScript library for embedding fonts in PPTX files, with seamless integratio
 - 🔌 **pptxgenjs Integration**: Seamless integration with pptxgenjs
 - 📱 **Cross-platform**: Support for Node.js and browser environments
 - 📦 **TypeScript Support**: Complete type definitions
+
+## Edit on CodeSandbox
+
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/nqf84m)
 
 ## 📦 Installation
 

@@ -12,6 +12,10 @@
 - 📱 **跨平台**: 支持 Node.js 和浏览器环境
 - 📦 **TypeScript 支持**: 完整的类型定义支持
 
+## Edit on CodeSandbox
+
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/nqf84m)
+
 ## 📦 安装
 
 ```bash
