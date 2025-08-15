@@ -53,9 +53,11 @@ const result = await embedFonts.save();
 
 ### Integration with pptxgenjs
 
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/pptx-embed-fonts-857gv3)
+
 ```typescript
 import pptxgenjs from "pptxgenjs";
-import { withPPTXEmbedFonts } from "pptx-embed-fonts";
+import { withPPTXEmbedFonts } from "pptx-embed-fonts/pptxgenjs";
 
 // Create enhanced version of pptxgenjs
 const EnhancedPPTXGenJS = withPPTXEmbedFonts(pptxgenjs);

@@ -51,9 +51,11 @@ const result = await embedFonts.save();
 
 ### 与 pptxgenjs 集成
 
+[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/pptx-embed-fonts-857gv3)
+
 ```typescript
 import pptxgenjs from "pptxgenjs";
-import { withPPTXEmbedFonts } from "pptx-embed-fonts";
+import { withPPTXEmbedFonts } from "pptx-embed-fonts/pptxgenjs";
 
 // 创建增强版的pptxgenjs
 const EnhancedPPTXGenJS = withPPTXEmbedFonts(pptxgenjs);
