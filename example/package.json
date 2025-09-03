@@ -16,7 +16,8 @@
     "react-dom": "^19.1.0",
     "react-live": "^4.1.8",
     "recast": "^0.23.11",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "pptxgenjs": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
