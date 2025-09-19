@@ -1,6 +1,6 @@
   {
     "name": "pptx-embed-fonts",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Embed fonts in pptx files",
     "type": "module",
     "files": [
@@ -19,11 +19,13 @@
     "exports": {
       ".": {
         "import": "./dist/index.js",
-        "require": "./dist/index.cjs"
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
       },
       "./pptxgenjs": {
         "import": "./dist/pptxgenjs.js",
-        "require": "./dist/pptxgenjs.cjs"
+        "require": "./dist/pptxgenjs.cjs",
+        "types": "./dist/pptxgenjs.d.ts"
       }
     },
     "types": "./dist/index.d.ts",
