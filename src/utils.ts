@@ -1,7 +1,7 @@
 import { Font } from "fonteditor-core";
 import pako from "pako";
 export function fontToEot(
-  type: "ttf" | "woff" | "woff2",
+  type: "ttf" | "woff" | "woff2" | "otf",
   fontBuffer: ArrayBuffer | Uint8Array
 ) {
   const font = Font.create(fontBuffer, {

@@ -9,7 +9,7 @@ A JavaScript library for embedding fonts in PPTX files, with seamless integratio
 
 ## ✨ Features
 
-- 🎯 **Font Embedding**: Support for TTF, EOT, and WOFF format font file embedding
+- 🎯 **Font Embedding**: Support for TTF, EOT, OTF and WOFF format font file embedding
 - 🔌 **pptxgenjs Integration**: Seamless integration with pptxgenjs
 - 📱 **Cross-platform**: Support for Node.js and browser environments
 - 📦 **TypeScript Support**: Complete type definitions
@@ -108,6 +108,10 @@ Load JSZip instance
 
 Add TTF format font
 
+##### `addFontFromOTF(fontName: string, otfFile: ArrayBuffer): Promise<void>`
+
+Add OTF format font
+
 ##### `addFontFromEOT(fontName: string, eotFile: ArrayBuffer): Promise<void>`
 
 Add EOT format font
@@ -144,7 +148,7 @@ Enhanced version of pptxgenjs class with the following additional methods:
 interface AddFontOptions {
   fontFace: string;
   fontFile: ArrayBuffer;
-  fontType: "ttf" | "eot" | "woff";
+  fontType: "ttf" | "eot" | "woff" | "otf";
 }
 ```
 

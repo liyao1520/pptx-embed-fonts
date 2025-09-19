@@ -7,7 +7,7 @@
 
 ## ✨ 特性
 
-- 🎯 **字体嵌入**: 支持 TTF、EOT、WOFF 格式字体文件嵌入
+- 🎯 **字体嵌入**: 支持 TTF、EOT、OTF、WOFF 格式字体文件嵌入
 - 🔌 **pptxgenjs 集成**: 提供与 pptxgenjs 的无缝集成
 - 📱 **跨平台**: 支持 Node.js 和浏览器环境
 - 📦 **TypeScript 支持**: 完整的类型定义支持
@@ -110,6 +110,10 @@ new PPTXEmbedFonts(zip?: JSZip)
 
 添加 EOT 格式字体
 
+##### `addFontFromOTF(fontName: string, otfFile: ArrayBuffer): Promise<void>`
+
+添加 OTF 格式字体
+
 ##### `addFontFromWOFF(fontName: string, woffFile: ArrayBuffer): Promise<void>`
 
 添加 WOFF 格式字体
@@ -142,7 +146,7 @@ new PPTXEmbedFonts(zip?: JSZip)
 interface AddFontOptions {
   fontFace: string;
   fontFile: ArrayBuffer;
-  fontType: "ttf" | "eot" | "woff";
+  fontType: "ttf" | "eot" | "woff" | "otf";
 }
 ```
 

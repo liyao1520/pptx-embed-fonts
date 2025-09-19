@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
-    "pptx-embed-fonts": "^0.0.1",
+    "pptx-embed-fonts": "0.0.3-beta.2",
+    "pptxgenjs": "^3.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-live": "^4.1.8",
     "recast": "^0.23.11",
-    "tailwindcss": "^4.1.11",
-    "pptxgenjs": "^3.0.0"
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

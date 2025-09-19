@@ -56,7 +56,7 @@ function withPPTXEmbedFonts(pptxgen: typeof pptxgenjs) {
     async addFont(options: {
       fontFace: string;
       fontFile: ArrayBuffer;
-      fontType: "ttf" | "eot" | "woff";
+      fontType: "ttf" | "eot" | "woff" | "otf";
     }) {
       if (options.fontType === "ttf") {
         await this._pptxEmbedFonts.addFontFromTTF(
@@ -73,6 +73,13 @@ function withPPTXEmbedFonts(pptxgen: typeof pptxgenjs) {
           options.fontFace,
           options.fontFile
         );
+      } else if (options.fontType === "otf") {
+        await this._pptxEmbedFonts.addFontFromOTF(
+          options.fontFace,
+          options.fontFile
+        );
+      } else {
+        throw new Error(`Invalid font type ${options.fontType}`);
       }
     }
     getFontInfo(fontFile: ArrayBuffer) {
