@@ -206,15 +206,15 @@ class PPTXEmbedFonts {
     await this.addFont(fontFace, fontData);
   }
   public async addFontFromTTF(fontFace: string, ttfFile: ArrayBuffer) {
-    const eotFile = fontToEot("ttf", ttfFile);
+    const eotFile = await fontToEot("ttf", ttfFile);
     await this.addFontFromEOT(fontFace, eotFile);
   }
   public async addFontFromWOFF(fontFace: string, woffFile: ArrayBuffer) {
-    const eotFile = fontToEot("woff", woffFile);
+    const eotFile = await fontToEot("woff", woffFile);
     await this.addFontFromEOT(fontFace, eotFile);
   }
   public async addFontFromOTF(fontFace: string, otfFile: ArrayBuffer) {
-    const eotFile = fontToEot("otf", otfFile);
+    const eotFile = await fontToEot("otf", otfFile);
     await this.addFontFromEOT(fontFace, eotFile);
   }
   public async updateFiles() {

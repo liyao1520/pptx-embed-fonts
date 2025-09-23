@@ -1,19 +1,32 @@
 import { Font } from "fonteditor-core";
+
 import pako from "pako";
-export function fontToEot(
-  type: "ttf" | "woff" | "woff2" | "otf",
+export async function fontToEot(
+  type: "ttf" | "woff" | "otf",
   fontBuffer: ArrayBuffer | Uint8Array
-) {
-  const font = Font.create(fontBuffer, {
+): Promise<ArrayBuffer> {
+  const options: any = {
     type,
     hinting: true,
-    inflate: pako.inflate as any,
-  });
+  };
+  if (type === "woff") {
+    options.inflate = pako.inflate;
+  }
+
+  const font = Font.create(fontBuffer, options);
 
   const eotBuffer = font.write({
     type: "eot",
     toBuffer: true,
   });
 
-  return new Uint8Array(eotBuffer).buffer;
+  // 保证返回 ArrayBuffer
+  if (eotBuffer instanceof ArrayBuffer) {
+    return eotBuffer;
+  }
+
+  return eotBuffer.buffer.slice(
+    eotBuffer.byteOffset,
+    eotBuffer.byteOffset + eotBuffer.byteLength
+  );
 }
