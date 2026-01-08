@@ -14,7 +14,9 @@
   "scripts": {
     "dev": "cd ./example && pnpm dev",
     "build:example": "cd ./example && pnpm build",
-    "build": "tsup"
+    "build": "tsup",
+    "prepublishOnly": "pnpm build",
+    "publish": "pnpm publish --access public"
   },
   "module": "dist/index.js",
   "main": "dist/index.cjs",
