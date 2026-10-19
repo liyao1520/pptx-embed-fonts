@@ -10,11 +10,23 @@ const isNode =
   process.release?.name === "node";
 
 const START_RID = 201314;
+
+type FontStyle = "regular" | "bold" | "italic" | "boldItalic";
+
 interface Font {
   name: string;
   data: ArrayBuffer;
   rid: number;
+  style: FontStyle;
 }
+
+const STYLE_TAG: Record<FontStyle, string> = {
+  regular: "p:regular",
+  bold: "p:bold",
+  italic: "p:italic",
+  boldItalic: "p:boldItalic",
+};
+
 class PPTXEmbedFonts {
   public zip: JSZip | undefined;
   public rId: number = START_RID;
@@ -85,19 +97,6 @@ class PPTXEmbedFonts {
     presentationNode.setAttribute("saveSubsetFonts", "true");
     presentationNode.setAttribute("embedTrueTypeFonts", "true");
 
-    // 创建嵌入字体节点的函数
-    const createEmbeddedFontNode = (font: Font) => {
-      const embeddedFontNode = doc.createElement("p:embeddedFont");
-      const fontNode = doc.createElement("p:font");
-      fontNode.setAttribute("typeface", font.name);
-      embeddedFontNode.appendChild(fontNode);
-
-      const regularNode = doc.createElement("p:regular");
-      regularNode.setAttribute("r:id", `rId${font.rid}`);
-      embeddedFontNode.appendChild(regularNode);
-      return embeddedFontNode;
-    };
-
     // 查找或创建 embeddedFontLst 节点
     let embeddedFontLstNode =
       presentationNode.getElementsByTagName("p:embeddedFontLst")[0];
@@ -138,12 +137,22 @@ class PPTXEmbedFonts {
 
     // 添加字体到 embeddedFontLst
     this.fonts.forEach((font) => {
-      const existingFont = Array.from(
+      let embeddedFontNode = Array.from(
         embeddedFontLstNode!.getElementsByTagName("p:font")
       ).find((node) => node.getAttribute("typeface") === font.name);
 
-      if (!existingFont) {
-        embeddedFontLstNode!.appendChild(createEmbeddedFontNode(font));
+      if (!embeddedFontNode) {
+        embeddedFontNode = doc.createElement("p:embeddedFont");
+        const fontNode = doc.createElement("p:font");
+        fontNode.setAttribute("typeface", font.name);
+        embeddedFontNode.appendChild(fontNode);
+        embeddedFontLstNode.appendChild(embeddedFontNode);
+      }
+      const tag = STYLE_TAG[font.style];
+      if (embeddedFontNode.getElementsByTagName(tag).length == 0) {
+        const node = doc.createElement(tag);
+        node.setAttribute("r:id", `rId${font.rid}`);
+        embeddedFontNode.appendChild(node);
       }
     });
 
@@ -197,23 +206,23 @@ class PPTXEmbedFonts {
     });
     return await blob.arrayBuffer();
   }
-  private async addFont(fontFace: string, fntData: ArrayBuffer) {
+  private async addFont(fontFace: string, fntData: ArrayBuffer, style: FontStyle = "regular") {
     const rid = this.uniqueId();
-    this.fonts.push({ name: fontFace, data: fntData, rid });
+    this.fonts.push({ name: fontFace, data: fntData, rid, style });
   }
-  public async addFontFromEOT(fontFace: string, eotFile: ArrayBuffer) {
+  public async addFontFromEOT(fontFace: string, eotFile: ArrayBuffer, style: FontStyle = "regular") {
     const fontData = await this.eot2FntData(eotFile);
     await this.addFont(fontFace, fontData);
   }
-  public async addFontFromTTF(fontFace: string, ttfFile: ArrayBuffer) {
+  public async addFontFromTTF(fontFace: string, ttfFile: ArrayBuffer, style: FontStyle = "regular") {
     const eotFile = await fontToEot("ttf", ttfFile);
     await this.addFontFromEOT(fontFace, eotFile);
   }
-  public async addFontFromWOFF(fontFace: string, woffFile: ArrayBuffer) {
+  public async addFontFromWOFF(fontFace: string, woffFile: ArrayBuffer, style: FontStyle = "regular") {
     const eotFile = await fontToEot("woff", woffFile);
     await this.addFontFromEOT(fontFace, eotFile);
   }
-  public async addFontFromOTF(fontFace: string, otfFile: ArrayBuffer) {
+  public async addFontFromOTF(fontFace: string, otfFile: ArrayBuffer, style: FontStyle = "regular") {
     const eotFile = await fontToEot("otf", otfFile);
     await this.addFontFromEOT(fontFace, eotFile);
   }

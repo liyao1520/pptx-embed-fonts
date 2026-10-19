@@ -102,21 +102,25 @@ new PPTXEmbedFonts(zip?: JSZip)
 
 加载 JSZip 实例
 
-##### `addFontFromTTF(fontName: string, ttfFile: ArrayBuffer): Promise<void>`
+##### `addFontFromTTF(fontName: string, ttfFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 添加 TTF 格式字体
 
-##### `addFontFromEOT(fontName: string, eotFile: ArrayBuffer): Promise<void>`
+##### `addFontFromEOT(fontName: string, eotFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 添加 EOT 格式字体
 
-##### `addFontFromOTF(fontName: string, otfFile: ArrayBuffer): Promise<void>`
+##### `addFontFromOTF(fontName: string, otfFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 添加 OTF 格式字体
 
-##### `addFontFromWOFF(fontName: string, woffFile: ArrayBuffer): Promise<void>`
+##### `addFontFromWOFF(fontName: string, woffFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 添加 WOFF 格式字体
+
+```typescript
+type FontStyle = "regular" | "bold" | "italic" | "boldItalic";
+```
 
 ##### `getFontInfo(fontBuffer: ArrayBuffer): any`
 
@@ -147,6 +151,7 @@ interface AddFontOptions {
   fontFace: string;
   fontFile: ArrayBuffer;
   fontType: "ttf" | "eot" | "woff" | "otf";
+  fontStyle?: "regular" | "bold" | "italic" | "boldItalic";
 }
 ```
 

@@ -57,26 +57,31 @@ function withPPTXEmbedFonts(pptxgen: typeof pptxgenjs) {
       fontFace: string;
       fontFile: ArrayBuffer;
       fontType: "ttf" | "eot" | "woff" | "otf";
+      fontStyle?: "regular" | "bold" | "italic" | "boldItalic";
     }) {
       if (options.fontType === "ttf") {
         await this._pptxEmbedFonts.addFontFromTTF(
           options.fontFace,
-          options.fontFile
+          options.fontFile,
+          options.fontStyle ?? "regular"
         );
       } else if (options.fontType === "eot") {
         await this._pptxEmbedFonts.addFontFromEOT(
           options.fontFace,
-          options.fontFile
+          options.fontFile,
+          options.fontStyle ?? "regular"
         );
       } else if (options.fontType === "woff") {
         await this._pptxEmbedFonts.addFontFromWOFF(
           options.fontFace,
-          options.fontFile
+          options.fontFile,
+          options.fontStyle ?? "regular"
         );
       } else if (options.fontType === "otf") {
         await this._pptxEmbedFonts.addFontFromOTF(
           options.fontFace,
-          options.fontFile
+          options.fontFile,
+          options.fontStyle ?? "regular"
         );
       } else {
         throw new Error(`Invalid font type ${options.fontType}`);

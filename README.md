@@ -104,21 +104,25 @@ Load PPTX file buffer
 
 Load JSZip instance
 
-##### `addFontFromTTF(fontName: string, ttfFile: ArrayBuffer): Promise<void>`
+##### `addFontFromTTF(fontName: string, ttfFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 Add TTF format font
 
-##### `addFontFromOTF(fontName: string, otfFile: ArrayBuffer): Promise<void>`
+##### `addFontFromOTF(fontName: string, otfFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 Add OTF format font
 
-##### `addFontFromEOT(fontName: string, eotFile: ArrayBuffer): Promise<void>`
+##### `addFontFromEOT(fontName: string, eotFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 Add EOT format font
 
-##### `addFontFromWOFF(fontName: string, woffFile: ArrayBuffer): Promise<void>`
+##### `addFontFromWOFF(fontName: string, woffFile: ArrayBuffer, style: FontStyle = "regular"): Promise<void>`
 
 Add WOFF format font
+
+```typescript
+type FontStyle = "regular" | "bold" | "italic" | "boldItalic";
+```
 
 ##### `getFontInfo(fontBuffer: ArrayBuffer): any`
 
@@ -149,6 +153,7 @@ interface AddFontOptions {
   fontFace: string;
   fontFile: ArrayBuffer;
   fontType: "ttf" | "eot" | "woff" | "otf";
+  fontStyle?: "regular" | "bold" | "italic" | "boldItalic";
 }
 ```
 
